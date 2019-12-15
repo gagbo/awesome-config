@@ -1,0 +1,9 @@
+[submodule "awesome-wm-widgets"]
+	path = awesome-wm-widgets
+	url = https://github.com/streetturtle/awesome-wm-widgets.git
+[submodule "lain"]
+	path = lain
+	url = https://github.com/lcpz/lain.git
+[submodule "net_widgets"]
+	path = net_widgets
+	url = https://github.com/pltanton/net_widgets.git
