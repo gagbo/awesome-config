@@ -11,6 +11,7 @@ Now that I know Lua better, I might make this work to my liking.
 ** Widgets
 - iw
 - luarocks install lua-socket
+- json.lua for the weather widget
 
 * Secrets
 
