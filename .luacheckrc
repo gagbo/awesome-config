@@ -1,9 +1,12 @@
--- vim: ft=lua -*- mode: lua; -*-
+-- -*- mode: lua-mode; -*- vim: ft=lua tw=80
 
-allow_defined = true
+-- Rerun tests only if their modification time changed.
+cache = true
 
--- Global objects defined by the C code
+ignore = {
+  "212", -- Unused argument, _arg_name is easier to understand than _, so this option is set to off.
+}
+
 globals = {
-  "client",
-  "awesome",
+
 }
