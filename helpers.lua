@@ -69,7 +69,7 @@ end
 
 function helpers.pad(size)
     local str = ""
-    for i = 1, size do
+    for _ = 1, size do
         str = str .. " "
     end
     local pad = wibox.widget.textbox(str)
@@ -172,16 +172,16 @@ function helpers.add_clickable_effect(w)
     local hover_cursor = "hand1"
 
     w:connect_signal("mouse::enter", function ()
-                         local w = _G.mouse.current_wibox
-                         if w then
-                             w.cursor = hover_cursor
+                         local wib = _G.mouse.current_wibox
+                         if wib then
+                             wib.cursor = hover_cursor
                          end
     end)
 
     w:connect_signal("mouse::leave", function ()
-                         local w = _G.mouse.current_wibox
-                         if w then
-                             w.cursor = original_cursor
+                         local wib = _G.mouse.current_wibox
+                         if wib then
+                             wib.cursor = original_cursor
                          end
     end)
 end

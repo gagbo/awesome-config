@@ -21,7 +21,6 @@ require("awful.hotkeys_popup.keys")
 -- awful.spawn.with_shell("xrdb -merge ~/.Xresources")
 beautiful.init(awful.util.getdir("config") .. "themes/gorgehousse/theme.lua")
 
-local helpers = require('helpers')
 local keys = require('keys')
 
 require('titlebars')
