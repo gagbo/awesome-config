@@ -123,14 +123,14 @@ awful.screen.connect_for_each_screen(
         local names = {"main", "www", "term", "read", "office", "irc", "7", "8", "9"}
         local l = awful.layout.suit -- Just to save some typing: use an alias.
         local layouts = {
-            l.floating,
             l.tile,
             l.tile,
-            l.max,
-            l.max,
-            l.floating,
-            l.tile.left,
-            l.floating,
+            l.tile,
+            l.tile,
+            l.tile,
+            l.tile,
+            l.tile,
+            l.tile,
             l.floating
         }
 
