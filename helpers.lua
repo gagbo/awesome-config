@@ -51,18 +51,18 @@ helpers.circle = function()
 end
 
 function helpers.colorize_text(txt, fg)
-    return "<span foreground='" .. fg .."'>" .. txt .. "</span>"
+    return "<span foreground='" .. fg .. "'>" .. txt .. "</span>"
 end
 
 function helpers.client_menu_toggle()
     local instance = nil
 
-    return function ()
+    return function()
         if instance and instance.wibox.visible then
             instance:hide()
             instance = nil
         else
-            instance = awful.menu.clients({ theme = { width = dpi(250) } })
+            instance = awful.menu.clients({theme = {width = dpi(250)}})
         end
     end
 end
@@ -80,34 +80,49 @@ function helpers.move_to_edge(c, direction)
     local workarea = awful.screen.focused().workarea
     local client_geometry = c:geometry()
     if direction == "up" then
-        c:geometry({ nil, y = workarea.y + beautiful.screen_margin * 2, nil, nil })
+        c:geometry({nil, y = workarea.y + beautiful.screen_margin * 2, nil, nil})
     elseif direction == "down" then
-        c:geometry({ nil, y = workarea.height + workarea.y - client_geometry.height - beautiful.screen_margin * 2 - beautiful.border_width * 2, nil, nil })
+        c:geometry(
+            {
+                nil,
+                y = workarea.height + workarea.y - client_geometry.height - beautiful.screen_margin * 2 -
+                    beautiful.border_width * 2,
+                nil,
+                nil
+            }
+        )
     elseif direction == "left" then
-        c:geometry({ x = workarea.x + beautiful.screen_margin * 2, nil, nil, nil })
+        c:geometry({x = workarea.x + beautiful.screen_margin * 2, nil, nil, nil})
     elseif direction == "right" then
-        c:geometry({ x = workarea.width + workarea.x - client_geometry.width - beautiful.screen_margin * 2 - beautiful.border_width * 2, nil, nil, nil })
+        c:geometry(
+            {
+                x = workarea.width + workarea.x - client_geometry.width - beautiful.screen_margin * 2 -
+                    beautiful.border_width * 2,
+                nil,
+                nil,
+                nil
+            }
+        )
     end
 end
 
 function helpers.create_titlebar(c, titlebar_buttons, titlebar_position, titlebar_size)
-    awful.titlebar(c, {font = beautiful.titlebar_font, position = titlebar_position, size = titlebar_size}) : setup {
+    awful.titlebar(c, {font = beautiful.titlebar_font, position = titlebar_position, size = titlebar_size}):setup {
         {
             buttons = titlebar_buttons,
-            layout  = wibox.layout.fixed.horizontal
+            layout = wibox.layout.fixed.horizontal
         },
         {
             buttons = titlebar_buttons,
-            layout  = wibox.layout.fixed.horizontal
+            layout = wibox.layout.fixed.horizontal
         },
         {
             buttons = titlebar_buttons,
             layout = wibox.layout.fixed.horizontal
         },
         layout = wibox.layout.align.horizontal
-                                                                                                                    }
+    }
 end
-
 
 local double_tap_timer = nil
 function helpers.single_double_tap(single_tap_function, double_tap_function)
@@ -120,12 +135,15 @@ function helpers.single_double_tap(single_tap_function, double_tap_function)
     end
 
     double_tap_timer =
-        gears.timer.start_new(0.20, function()
-                                  double_tap_timer = nil
-                                  -- naughty.notify({text = "We got a single tap"})
-                                  single_tap_function()
-                                  return false
-        end)
+        gears.timer.start_new(
+        0.20,
+        function()
+            double_tap_timer = nil
+            -- naughty.notify({text = "We got a single tap"})
+            single_tap_function()
+            return false
+        end
+    )
 end
 
 function helpers.toggle_scratchpad()
@@ -146,7 +164,7 @@ function helpers.toggle_scratchpad()
 
     -- Move scratchpad to current tag
     local current_tag = screen.selected_tag
-    local scratchpad_client = function (c)
+    local scratchpad_client = function(c)
         return awful.rules.match(c, {class = "scratchpad"})
     end
     for c in awful.client.iterate(scratchpad_client) do
@@ -171,19 +189,25 @@ function helpers.add_clickable_effect(w)
     local original_cursor = "left_ptr"
     local hover_cursor = "hand1"
 
-    w:connect_signal("mouse::enter", function ()
-                         local wib = _G.mouse.current_wibox
-                         if wib then
-                             wib.cursor = hover_cursor
-                         end
-    end)
+    w:connect_signal(
+        "mouse::enter",
+        function()
+            local wib = _G.mouse.current_wibox
+            if wib then
+                wib.cursor = hover_cursor
+            end
+        end
+    )
 
-    w:connect_signal("mouse::leave", function ()
-                         local wib = _G.mouse.current_wibox
-                         if wib then
-                             wib.cursor = original_cursor
-                         end
-    end)
+    w:connect_signal(
+        "mouse::leave",
+        function()
+            local wib = _G.mouse.current_wibox
+            if wib then
+                wib.cursor = original_cursor
+            end
+        end
+    )
 end
 
 return helpers
