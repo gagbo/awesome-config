@@ -8,7 +8,7 @@ run() {
 }
 
 # Compositor
-run compton -b --conf "${HOME}/.config/compton.conf"
+run picom -b
 
 # Network
 run nm-applet
@@ -16,6 +16,6 @@ run nm-applet
 # Battery / Power management
 run xfce4-power-manager
 
-run owncloud
+run nextcloud
 
 run keepassxc
