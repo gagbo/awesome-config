@@ -3,15 +3,12 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local gears = require("gears")
-local beautiful = require("beautiful")
-local xresources = require("beautiful.xresources")
-local dpi = xresources.apply_dpi
 
 local helpers = require('helpers')
 
 local keys = {}
 
-modkey = "Mod4"
+local modkey = "Mod4"
 
 -- * {{{ Mouse bindings on desktop
 keys.desktopbuttons = gears.table.join(
@@ -187,7 +184,7 @@ keys.globalkeys = gears.table.join(
         function () awful.spawn(terminal) end,
         {description = "open a terminal", group = "launcher"}),
 
-    awful.key({ modkey, "Control" }, "r",
+    awful.key({ modkey }, "q",
         awesome.restart,
         {description = "reload awesome", group = "awesome"}),
 
