@@ -1,3 +1,5 @@
+-- This uses the global client class : https://awesomewm.org/doc/api/classes/client.html
+-- luacheck: globals client
 local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")

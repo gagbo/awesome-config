@@ -1,3 +1,8 @@
+-- This uses
+-- the global screen class : https://awesomewm.org/doc/api/classes/screen.html
+-- the global client class : https://awesomewm.org/doc/api/classes/client.html
+-- luacheck: globals screen client
+
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
@@ -11,7 +16,6 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -21,6 +25,7 @@ require("awful.hotkeys_popup.keys")
 -- awful.spawn.with_shell("xrdb -merge ~/.Xresources")
 beautiful.init(awful.util.getdir("config") .. "themes/gorgehousse/theme.lua")
 
+local config = require("config")
 local keys = require("keys")
 
 require("titlebars")
@@ -65,22 +70,6 @@ end
 -- }}}
 
 -- * {{{ Variable definitions
--- All those values are globals because they're also used in
--- keys.lua for the bindings
-
--- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
-floating_terminal = terminal .. " -c fst "
-editor = os.getenv("EDITOR") or "vim"
-editor_cmd = terminal .. " -e " .. editor
-screen_lock = "i3lock-laptop.sh"
-graphical_emacs = "emacsclient -n -c -a ''"
-launcher = "dmenu_run -h 35"
-info = "htop"
-info_cmd = floating_terminal .. " -e " .. info
-music_player = "ncmpcpp"
-music_player_cmd = floating_terminal .. " -e " .. music_player
-browser = "firefox"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -105,40 +94,9 @@ awful.layout.layouts = {
 
 -- * {{{ Menu
 -- ** Create a launcher widget and a main menu
-myawesomemenu = {
-    {"hotkeys", function()
-            hotkeys_popup.show_help(nil, awful.screen.focused())
-        end},
-    {"manual", terminal .. " -e man awesome"},
-    {"edit config", editor_cmd .. " " .. awesome.conffile},
-    {"restart", awesome.restart},
-    {"quit", function()
-            awesome.quit()
-        end}
-}
-
-mymainmenu =
-    awful.menu(
-    {
-        items = {
-            {"awesome", myawesomemenu, beautiful.awesome_icon},
-            {"open terminal", terminal},
-            {"Emacs", graphical_emacs}
-        }
-    }
-)
-
-mylauncher =
-    awful.widget.launcher(
-    {
-        image = beautiful.awesome_icon,
-        menu = mymainmenu
-    }
-)
-
 -- ** Menubar configuration
-app_folders = {"/usr/share/applications/", "/usr/local/share/applications/", "~/.local/share/applications/"}
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+-- local app_folders = config.app_folders
+menubar.utils.terminal = config.terminal -- Set the terminal for applications that require it
 -- }}}
 
 -- * Wallpaper

@@ -1,14 +1,17 @@
+-- This uses the global client class : https://awesomewm.org/doc/api/classes/client.html
+-- luacheck: globals client
 local awful = require("awful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local gears = require("gears")
 
+local config = require("config")
 local helpers = require("helpers")
 
 local keys = {}
 
-local modkey = "Mod4"
+local modkey = config.modkey
 
 -- * {{{ Mouse bindings on desktop
 keys.desktopbuttons =
@@ -18,11 +21,11 @@ keys.desktopbuttons =
         {},
         1,
         function()
-            mymainmenu:hide()
+            config.mymainmenu:hide()
             naughty.destroy_all_notifications()
 
             local function double_tap()
-                uc = awful.client.urgent.get()
+                local uc = awful.client.urgent.get()
                 -- If there is no urgent client, go back to last tag
                 if uc == nil then
                     awful.tag.history.restore()
@@ -42,15 +45,15 @@ keys.desktopbuttons =
         {},
         3,
         function()
-            mymainmenu:toggle()
+            config.mymainmenu:toggle()
         end
     ),
-    -- ** Middle button - Toggle start scren
+    -- ** Middle button
     awful.button(
         {},
         2,
         function()
-            start_screen_show()
+            -- start_screen_show()
             -- sidebar.visible = not sidebar.visible
         end
     ),
@@ -99,7 +102,7 @@ keys.globalkeys =
         {modkey, "Control"},
         "l",
         function()
-            awful.util.spawn(screen_lock)
+            awful.util.spawn(config.screen_lock)
         end,
         {description = "Lock screen", group = "awesome"}
     ),
@@ -126,7 +129,7 @@ keys.globalkeys =
         {modkey},
         "w",
         function()
-            mymainmenu:show()
+            config.mymainmenu:show()
         end,
         {description = "show main menu", group = "awesome"}
     ),
@@ -256,7 +259,7 @@ keys.globalkeys =
         {modkey},
         "Return",
         function()
-            awful.spawn(terminal)
+            awful.spawn(config.terminal)
         end,
         {description = "open a terminal", group = "launcher"}
     ),

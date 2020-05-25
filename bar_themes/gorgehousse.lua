@@ -1,4 +1,6 @@
 -- * bar_themes/gorgehousse.lua -- Personal Bar theme
+-- This uses the global client class : https://awesomewm.org/doc/api/classes/client.html
+-- luacheck: globals client
 -- * Requires
 local gears = require("gears")
 local awful = require("awful")
@@ -16,6 +18,7 @@ local weather_widget = require("awesome-wm-widgets.weather-widget.weather")
 local batteryarc_widget = require("awesome-wm-widgets.batteryarc-widget.batteryarc")
 local net_widgets = require("net_widgets")
 
+local config = require("../config")
 local secrets = require("secrets")
 
 -- * Widget definitions
@@ -33,7 +36,7 @@ local temp_widget =
         tempfile = tempfile,
         timeout = 10,
         settings = function()
-            -- luacheck: globals coretemp_now
+            -- luacheck: globals coretemp_now widget
             widget:set_markup(" CPU : " .. coretemp_now .. "C ")
         end
     }
@@ -44,7 +47,7 @@ local mysysload =
     lain.widget.sysload(
     {
         settings = function()
-            -- luacheck: globals load_1 load_5 load_15
+            -- luacheck: globals load_1 load_5 load_15 widget
             widget:set_markup(load_1 .. " " .. load_5 .. " " .. load_15 .. " ")
         end
     }
@@ -116,7 +119,7 @@ local taglist_buttons =
         end
     ),
     awful.button(
-        {modkey},
+        {config.modkey},
         1,
         function(t)
             if client.focus then
@@ -126,7 +129,7 @@ local taglist_buttons =
     ),
     awful.button({}, 3, awful.tag.viewtoggle),
     awful.button(
-        {modkey},
+        {config.modkey},
         3,
         function(t)
             if client.focus then
@@ -187,7 +190,7 @@ local tasklist_buttons =
 )
 
 -- * Keyboard map indicator and switcher
-local mykeyboardlayout = awful.widget.keyboardlayout()
+-- local mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- * Bar definition
 awful.screen.connect_for_each_screen(

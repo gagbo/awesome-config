@@ -101,7 +101,9 @@ theme.tooltip_bg = theme.bg_normal
 -- mouse_finder_[color|timeout|animate_timeout|radius|factor]
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
 theme.prompt_font = "KoHo 14"
--- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
+-- hotkeys_[bg|fg|border_width|border_color
+--          shape|opacity|modifiers_fg|label_bg
+--          label_fg|group_margin|font|description_font]
 -- Example:
 
 theme.wallpaper = "~/Images/wallpapers/background"

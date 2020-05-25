@@ -1,3 +1,5 @@
+-- This uses the global client class : https://awesomewm.org/doc/api/classes/client.html
+-- luacheck: globals client traybox_activator
 local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
@@ -7,6 +9,8 @@ local dpi = xresources.apply_dpi
 
 local helpers = require("helpers")
 local pad = helpers.pad
+
+local config = require("../config")
 
 -- {{{ Widgets
 -- Create a wibox for each screen and add it
@@ -20,7 +24,7 @@ local taglist_buttons =
         end
     ),
     awful.button(
-        {modkey},
+        {config.modkey},
         1,
         function(t)
             if client.focus then
@@ -39,7 +43,7 @@ local taglist_buttons =
         end
     ),
     awful.button(
-        {modkey},
+        {config.modkey},
         3,
         function(t)
             if client.focus then
@@ -59,59 +63,6 @@ local taglist_buttons =
         5,
         function(t)
             awful.tag.viewnext(t.screen)
-        end
-    )
-)
-
-local tasklist_buttons =
-    gears.table.join(
-    awful.button(
-        {},
-        1,
-        function(c)
-            if c == client.focus then
-                c.minimized = true
-            else
-                -- Without this, the following
-                -- :isvisible() makes no sense
-                c.minimized = false
-                if not c:isvisible() and c.first_tag then
-                    c.first_tag:view_only()
-                end
-                -- This will also un-minimize
-                -- the client, if needed
-                client.focus = c
-                c:raise()
-            end
-        end
-    ),
-    -- Middle mouse button closes the window
-    awful.button(
-        {},
-        2,
-        function(c)
-            c:kill()
-        end
-    ),
-    awful.button(
-        {},
-        3,
-        function(c)
-            c.minimized = true
-        end
-    ),
-    awful.button(
-        {},
-        4,
-        function()
-            awful.client.focus.byidx(-1)
-        end
-    ),
-    awful.button(
-        {},
-        5,
-        function()
-            awful.client.focus.byidx(1)
         end
     )
 )
@@ -159,7 +110,7 @@ awful.screen.connect_for_each_screen(
         )
 
         -- Create a taglist widget
-        -- s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
+        s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
 
         -- Create an icon taglist
         -- local icon_taglist = require("noodle.icon_taglist")
@@ -294,7 +245,7 @@ awful.screen.connect_for_each_screen(
     end
 )
 
-local s = mouse.screen
+local s = _G.mouse.screen
 -- Show traybox when the mouse touches the rightmost edge of the wibar
 -- TODO fix for wibar_position = "top"
 traybox_activator =

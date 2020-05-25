@@ -1,3 +1,6 @@
+-- This uses the global client class : https://awesomewm.org/doc/api/classes/client.html
+-- luacheck: globals client
+
 -- * titlebars.lua -- Title Bars configuration
 -- * Requires
 local awful = require("awful")
@@ -16,7 +19,7 @@ titlebars.buttons =
         {},
         1,
         function()
-            local c = mouse.object_under_pointer()
+            local c = _G.mouse.object_under_pointer()
             client.focus = c
             c:raise()
             awful.mouse.client.move(c)
@@ -38,7 +41,7 @@ titlebars.buttons =
         {},
         2,
         function()
-            window_to_kill = mouse.object_under_pointer()
+            local window_to_kill = _G.mouse.object_under_pointer()
             window_to_kill:kill()
         end
     ),
@@ -47,7 +50,7 @@ titlebars.buttons =
         {},
         3,
         function()
-            local c = mouse.object_under_pointer()
+            local c = _G.mouse.object_under_pointer()
             client.focus = c
             c:raise()
             awful.mouse.client.resize(c)
@@ -59,7 +62,7 @@ titlebars.buttons =
         {},
         9,
         function()
-            local c = mouse.object_under_pointer()
+            local c = _G.mouse.object_under_pointer()
             client.focus = c
             c:raise()
             --awful.placement.centered(c,{honor_workarea=true})
@@ -71,7 +74,7 @@ titlebars.buttons =
         {},
         8,
         function()
-            local c = mouse.object_under_pointer()
+            local c = _G.mouse.object_under_pointer()
             client.focus = c
             c:raise()
             c.ontop = not c.ontop
