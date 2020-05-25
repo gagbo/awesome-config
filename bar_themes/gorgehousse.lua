@@ -20,9 +20,9 @@ local secrets = require("secrets")
 
 -- * Widget definitions
 -- ** Temp widget
-function getcputempfile()
-    file = io.popen("bash -c 'echo  /sys/devices/platform/coretemp.0/hwmon/hwmon*/temp1_input'")
-    stdout = file:read("*l")
+local function getcputempfile()
+    local file = io.popen("bash -c 'echo  /sys/devices/platform/coretemp.0/hwmon/hwmon*/temp1_input'")
+    local stdout = file:read("*l")
     return stdout
 end
 local tempfile = getcputempfile()
@@ -33,6 +33,7 @@ local temp_widget =
         tempfile = tempfile,
         timeout = 10,
         settings = function()
+            -- luacheck: globals coretemp_now
             widget:set_markup(" CPU : " .. coretemp_now .. "C ")
         end
     }
@@ -43,6 +44,7 @@ local mysysload =
     lain.widget.sysload(
     {
         settings = function()
+            -- luacheck: globals load_1 load_5 load_15
             widget:set_markup(load_1 .. " " .. load_5 .. " " .. load_15 .. " ")
         end
     }
