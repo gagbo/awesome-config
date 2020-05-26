@@ -3,10 +3,10 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local beautiful = require("beautiful")
 local config = {}
 
--- ** Modkey
+-- * Modkey
 config.modkey = "Mod4"
 
--- ** User programs
+-- * User programs
 -- This is used later as the default terminal and editor to run.
 config.terminal = "alacritty"
 config.floating_terminal = config.terminal .. " -c fst "
@@ -21,18 +21,27 @@ config.music_player = "ncmpcpp"
 config.music_player_cmd = config.floating_terminal .. " -e " .. config.music_player
 config.browser = "firefox"
 
--- ** Menus
-config.myawesomemenu = {
-    {"hotkeys", function()
-            hotkeys_popup.show_help(nil, awful.screen.focused())
-        end},
-    {"manual", config.terminal .. " -e man awesome"},
-    {"edit config", config.editor_cmd .. " " .. awesome.conffile},
-    {"restart", awesome.restart},
-    {"quit", function()
-            awesome.quit()
-        end}
-}
+-- * Menus
+do
+    -- luacheck: globals awesome
+    config.myawesomemenu = {
+        {
+            "hotkeys",
+            function()
+                hotkeys_popup.show_help(nil, awful.screen.focused())
+            end
+        },
+        {"manual", config.terminal .. " -e man awesome"},
+        {"edit config", config.editor_cmd .. " " .. awesome.conffile},
+        {"restart", awesome.restart},
+        {
+            "quit",
+            function()
+                awesome.quit()
+            end
+        }
+    }
+end
 
 config.mymainmenu =
     awful.menu(
@@ -53,9 +62,13 @@ config.mylauncher =
     }
 )
 
-
--- ** Menubar configuration
+-- * Menubar configuration
 config.app_folders = {"/usr/share/applications/", "/usr/local/share/applications/", "~/.local/share/applications/"}
+
+-- * Widgets
+-- ** Network widgets
+config.net_widgets_wireless = {interface = "wlp4s0"}
+config.net_widgets_wired = {"enp0s31f6"}
 
 -- ** Weather widget
 config.weather_widget_city = "paris,fr"

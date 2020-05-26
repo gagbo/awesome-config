@@ -57,12 +57,12 @@ local mysysload =
 ).widget
 
 -- ** Network widgets
-local net_wireless = net_widgets.wireless({interface = "wlp4s0"})
+local net_wireless = net_widgets.wireless(config.net_widgets_wireless)
 
 local net_wired =
     net_widgets.indicator(
     {
-        interfaces = {"enp0s31f6"},
+        interfaces = config.net_widgets_wired,
         timeout = 5
     }
 )
