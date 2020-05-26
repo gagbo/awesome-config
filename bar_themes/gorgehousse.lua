@@ -82,8 +82,8 @@ local myweatherwidget =
     weather_widget(
     {
         api_key = secrets.weather_widget_api_key,
-        city = secrets.weather_widget_city,
-        units = secrets.weather_widget_units
+        city = config.weather_widget_city,
+        units = config.weather_widget_units
     }
 )
 

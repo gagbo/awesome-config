@@ -57,4 +57,8 @@ config.mylauncher =
 -- ** Menubar configuration
 config.app_folders = {"/usr/share/applications/", "/usr/local/share/applications/", "~/.local/share/applications/"}
 
+-- ** Weather widget
+config.weather_widget_city = "paris,fr"
+config.weather_widget_units = "metric"
+
 return config
