@@ -19,7 +19,7 @@ local batteryarc_widget = require("awesome-wm-widgets.batteryarc-widget.batterya
 local net_widgets = require("net_widgets")
 
 local config = require("../config")
-local secrets = require("secrets")
+local secrets = require("secrets") or require("secrets-example")
 
 -- * Widget definitions
 -- ** Temp widget
