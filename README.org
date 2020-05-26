@@ -11,11 +11,13 @@ Now that I know Lua better, I might make this work to my liking.
 ** Widgets
 - iw
 - luarocks install lua-socket
-- json.lua for the weather widget
+- [[./json.lua][json.lua]] for the weather widget
 
 * Secrets
+The [[./secrets-example.lua][secrets-example]] file shows which secrets are currently used and should be
+correctly defined.
 
-* TODO Tasks [1/11]
+* TODO Tasks [5/12]
 ** DONE Add a "test" target to Makefile
 This should run awesome in Xephyr for the test phase
 ** TODO Reduce icons dependencies [0/2]
@@ -25,15 +27,24 @@ This should run awesome in Xephyr for the test phase
 ** TODO Check that all dependencies in README are listed correctly
 ** TODO Make the background not a hard path
 Use feh or nitrogen if possible
-** TODO Make the configuration a luarock (vendor everything like stack for XMonad)
-*** TODO Add a basic rocks spec
-*** TODO Add fixed depedencies in the spec
+** CANCELLED Make the configuration a luarock (vendor everything like stack for XMonad) :CANCELLED:
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2020-05-26 mar. 15:50] \\
+  Fixing awesome version cannot be done with luarocks, so the main reason for this whole thing is gone.
+:END:
+*** DONE Add a basic rocks spec
+*** CANCELLED Add fixed depedencies in the spec :CANCELLED:
+:LOGBOOK:
+- State "CANCELLED"  from "TODO"       [2020-05-26 mar. 15:49] \\
+  Awesome is essentially a C program so luarocks can't help, and lain is not easily fetchable from luarocks
+:END:
 Use luarocks spec to :
 - Fix awesome version
 - Fix lain version
 
 The rest has to stay as git submodules.
 
-*** TODO Test installation of luarocks spec
+*** DONE Test installation of luarocks spec
 Make sure the Luarocks spec correctly install the awesome binary
 This will prevent the last part of stability I need.
+** TODO Find a way to vendor/lock/bundle awesome version and test against that
