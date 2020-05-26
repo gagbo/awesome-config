@@ -24,6 +24,8 @@ if (not secrets_available) then
     secrets = require("secrets-example")
 end
 
+local bar_theme_path = "~/.config/awesome/bar_themes/"
+
 -- * Widget definitions
 -- ** Temp widget
 local function getcputempfile()
@@ -97,7 +99,7 @@ local mybrightnesswidget =
         get_brightness_cmd = "xbacklight -get",
         inc_brightness_cmd = "xbacklight -inc 4",
         dec_brightness_cmd = "xbacklight -dec 4",
-        path_to_icon = "/usr/share/icons/hicolor/scalable/status/symbolic/display-brightness-symbolic.svg",
+        path_to_icon = bar_theme_path .. "display-brightness.svg",
         font = widget_font
     }
 )

@@ -13,17 +13,20 @@ Now that I know Lua better, I might make this work to my liking.
 - Network widget :: iw
 - Weather widget :: luarocks install lua-socket
 - Weather widget :: [[./json.lua][json.lua]] for the weather widget
+- Weather widget :: Arc icon theme (in =/usr/share/icons/Arc/status/symbolic/weather*.svg=)
 
 * Secrets
 The [[./secrets-example.lua][secrets-example]] file shows which secrets are currently used and should be
 correctly defined.
 
-* TODO Tasks [8/12]
+* TODO Tasks [11/12]
 ** DONE Add a "test" target to Makefile
 This should run awesome in Xephyr for the test phase
-** TODO Reduce icons dependencies [0/2]
-*** TODO Brightness Widget
-*** TODO Weather widget
+** DONE Reduce icons dependencies [2/2]
+*** DONE Brightness Widget
+Vendor the icon
+*** DONE Weather widget
+Added the Arc dependency it's easier
 ** DONE Add an example secrets file (or use defensive programming)
 ** DONE Check that all dependencies in README are listed correctly
 ** DONE Make the background not a hard path
