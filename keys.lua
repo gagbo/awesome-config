@@ -263,8 +263,24 @@ keys.globalkeys =
         end,
         {description = "open a terminal", group = "launcher"}
     ),
-    awful.key({modkey}, "q", awesome.restart, {description = "reload awesome", group = "awesome"}),
-    awful.key({modkey, "Shift"}, "q", awesome.quit, {description = "quit awesome", group = "awesome"}),
+    awful.key(
+        {modkey},
+        "q",
+        function()
+            -- luacheck: globals awesome
+            awesome.restart()
+        end,
+        {description = "reload awesome", group = "awesome"}
+    ),
+    awful.key(
+        {modkey, "Shift"},
+        "q",
+        function()
+            -- luacheck: globals awesome
+            awesome.quit()
+        end,
+        {description = "quit awesome", group = "awesome"}
+    ),
     -- ** Prompt
     awful.key(
         {modkey},
@@ -554,8 +570,11 @@ keys.clientbuttons =
 )
 
 -- Set keys
-root.keys(keys.globalkeys)
-root.buttons(keys.desktopbuttons)
+do
+    -- luacheck: globals root
+    root.keys(keys.globalkeys)
+    root.buttons(keys.desktopbuttons)
+end
 -- }}}
 
 return keys

@@ -8,6 +8,4 @@ ignore = {
 }
 
 globals = {
-  "awesome", -- This is a configuration for Awesome WM
-  "root",
 }

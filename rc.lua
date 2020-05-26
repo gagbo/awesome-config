@@ -1,7 +1,8 @@
 -- This uses
+-- The global awesome object
 -- the global screen class : https://awesomewm.org/doc/api/classes/screen.html
 -- the global client class : https://awesomewm.org/doc/api/classes/client.html
--- luacheck: globals screen client
+-- luacheck: globals screen client awesome
 
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
