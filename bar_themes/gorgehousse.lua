@@ -26,6 +26,8 @@ end
 
 local bar_theme_path = "~/.config/awesome/bar_themes/"
 
+local gorgehousse_bar = {}
+
 -- * Widget definitions
 -- ** Temp widget
 local function getcputempfile()
@@ -198,94 +200,98 @@ local tasklist_buttons =
 -- local mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- * Bar definition
-awful.screen.connect_for_each_screen(
-    function(s)
-        -- ** Create helper widgets
-        -- *** Create a promptbox for each screen
-        s.mypromptbox = awful.widget.prompt()
-        -- *** Create an imagebox widget which will contain an icon indicating which layout we're using.
-        -- We need one layoutbox per screen.
-        s.mylayoutbox = awful.widget.layoutbox(s)
-        s.mylayoutbox:buttons(
-            gears.table.join(
-                awful.button(
-                    {},
-                    1,
-                    function()
-                        awful.layout.inc(1)
-                    end
-                ),
-                awful.button(
-                    {},
-                    3,
-                    function()
-                        awful.layout.inc(-1)
-                    end
-                ),
-                awful.button(
-                    {},
-                    4,
-                    function()
-                        awful.layout.inc(1)
-                    end
-                ),
-                awful.button(
-                    {},
-                    5,
-                    function()
-                        awful.layout.inc(-1)
-                    end
+gorgehousse_bar.setup_bar = function()
+    awful.screen.connect_for_each_screen(
+        function(s)
+            -- ** Create helper widgets
+            -- *** Create a promptbox for each screen
+            s.mypromptbox = awful.widget.prompt()
+            -- *** Create an imagebox widget which will contain an icon indicating which layout we're using.
+            -- We need one layoutbox per screen.
+            s.mylayoutbox = awful.widget.layoutbox(s)
+            s.mylayoutbox:buttons(
+                gears.table.join(
+                    awful.button(
+                        {},
+                        1,
+                        function()
+                            awful.layout.inc(1)
+                        end
+                    ),
+                    awful.button(
+                        {},
+                        3,
+                        function()
+                            awful.layout.inc(-1)
+                        end
+                    ),
+                    awful.button(
+                        {},
+                        4,
+                        function()
+                            awful.layout.inc(1)
+                        end
+                    ),
+                    awful.button(
+                        {},
+                        5,
+                        function()
+                            awful.layout.inc(-1)
+                        end
+                    )
                 )
             )
-        )
-        -- *** Create a taglist widget
-        s.mytaglist =
-            awful.widget.taglist {
-            screen = s,
-            filter = awful.widget.taglist.filter.all,
-            buttons = taglist_buttons
-        }
+            -- *** Create a taglist widget
+            s.mytaglist =
+                awful.widget.taglist {
+                screen = s,
+                filter = awful.widget.taglist.filter.all,
+                buttons = taglist_buttons
+            }
 
-        -- *** Create a tasklist widget
-        s.mytasklist =
-            awful.widget.tasklist {
-            screen = s,
-            filter = awful.widget.tasklist.filter.currenttags,
-            buttons = tasklist_buttons
-        }
+            -- *** Create a tasklist widget
+            s.mytasklist =
+                awful.widget.tasklist {
+                screen = s,
+                filter = awful.widget.tasklist.filter.currenttags,
+                buttons = tasklist_buttons
+            }
 
-        -- ** Create the wibox
-        s.mywibox = awful.wibar({position = "top", screen = s})
+            -- ** Create the wibox
+            s.mywibox = awful.wibar({position = "top", screen = s})
 
-        -- ** Add widgets to the wibox
-        s.mywibox:setup {
-            {
-                -- *** Left widgets
-                layout = wibox.layout.fixed.horizontal,
-                s.mytaglist,
-                s.mypromptbox,
-                mybrightnesswidget,
-                myvolumebarwidget
-            },
-            s.mytasklist, -- *** Middle widget
-            {
-                -- *** Right widgets
-                layout = wibox.layout.fixed.horizontal,
-                myweatherwidget,
-                net_wired,
-                net_wireless,
-                temp_widget,
-                mysysload,
-                mycpuwidget,
-                myramwidget,
-                -- mykeyboardlayout,
-                mybattery,
-                mytextclock,
-                wibox.widget.systray(),
-                s.mylayoutbox
-            },
-            layout = wibox.layout.align.horizontal
-        }
-    end
-)
+            -- ** Add widgets to the wibox
+            s.mywibox:setup {
+                {
+                    -- *** Left widgets
+                    layout = wibox.layout.fixed.horizontal,
+                    s.mytaglist,
+                    s.mypromptbox,
+                    mybrightnesswidget,
+                    myvolumebarwidget
+                },
+                s.mytasklist, -- *** Middle widget
+                {
+                    -- *** Right widgets
+                    layout = wibox.layout.fixed.horizontal,
+                    myweatherwidget,
+                    net_wired,
+                    net_wireless,
+                    temp_widget,
+                    mysysload,
+                    mycpuwidget,
+                    myramwidget,
+                    -- mykeyboardlayout,
+                    mybattery,
+                    mytextclock,
+                    wibox.widget.systray(),
+                    s.mylayoutbox
+                },
+                layout = wibox.layout.align.horizontal
+            }
+        end
+    )
+end
 -- }}}
+
+return gorgehousse_bar

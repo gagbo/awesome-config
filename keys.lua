@@ -569,12 +569,4 @@ keys.clientbuttons =
     )
 )
 
--- Set keys
-do
-    -- luacheck: globals root
-    root.keys(keys.globalkeys)
-    root.buttons(keys.desktopbuttons)
-end
--- }}}
-
 return keys

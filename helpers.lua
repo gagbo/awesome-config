@@ -31,7 +31,6 @@ helpers.prrect = function(radius, tl, tr, br, bl)
 end
 
 -- Create info bubble shape
--- TODO
 helpers.infobubble = function(radius)
     return function(cr, width, height)
         gears.shape.infobubble(cr, width, height, radius)
