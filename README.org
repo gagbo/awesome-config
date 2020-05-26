@@ -18,16 +18,16 @@ Now that I know Lua better, I might make this work to my liking.
 The [[./secrets-example.lua][secrets-example]] file shows which secrets are currently used and should be
 correctly defined.
 
-* TODO Tasks [5/12]
+* TODO Tasks [8/12]
 ** DONE Add a "test" target to Makefile
 This should run awesome in Xephyr for the test phase
 ** TODO Reduce icons dependencies [0/2]
 *** TODO Brightness Widget
 *** TODO Weather widget
-** TODO Add an example secrets file (or use defensive programming)
-** TODO Check that all dependencies in README are listed correctly
-** TODO Make the background not a hard path
-Use feh or nitrogen if possible
+** DONE Add an example secrets file (or use defensive programming)
+** DONE Check that all dependencies in README are listed correctly
+** DONE Make the background not a hard path
+Use feh or nitrogen if possible : cancelled for now, but the wallpaper is just included in the repo now
 ** CANCELLED Make the configuration a luarock (vendor everything like stack for XMonad) :CANCELLED:
 :LOGBOOK:
 - State "CANCELLED"  from "TODO"       [2020-05-26 mar. 15:50] \\
