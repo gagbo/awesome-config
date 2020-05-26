@@ -106,7 +106,7 @@ theme.prompt_font = "KoHo 14"
 --          label_fg|group_margin|font|description_font]
 -- Example:
 
-theme.wallpaper = "~/Pictures/wallpapers/Uru-IBO.png"
+theme.wallpaper = themes_path .. "gorgehousse/Uru-IBO.png"
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
