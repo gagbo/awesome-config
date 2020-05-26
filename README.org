@@ -7,11 +7,12 @@ Now that I know Lua better, I might make this work to my liking.
 - Picom
 - xfce4-power-manager
 - nextcloud
+- nm-applet
 
 ** Widgets
-- iw
-- luarocks install lua-socket
-- [[./json.lua][json.lua]] for the weather widget
+- Network widget :: iw
+- Weather widget :: luarocks install lua-socket
+- Weather widget :: [[./json.lua][json.lua]] for the weather widget
 
 * Secrets
 The [[./secrets-example.lua][secrets-example]] file shows which secrets are currently used and should be

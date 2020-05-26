@@ -16,6 +16,8 @@ run nm-applet
 # Battery / Power management
 run xfce4-power-manager
 
+# Synchronization client
 run nextcloud
 
+# Password management
 run keepassxc
