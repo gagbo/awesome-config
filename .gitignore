@@ -1,4 +1,5 @@
 secrets.lua
+.luacheckcache
 
 # Created by https://www.gitignore.io/api/lua
 # Edit at https://www.gitignore.io/?templates=lua
@@ -48,4 +49,3 @@ luac.out
 
 # End of https://www.gitignore.io/api/lua
 
-.luacheckcache
