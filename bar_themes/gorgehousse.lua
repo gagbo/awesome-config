@@ -274,6 +274,7 @@ gorgehousse_bar.setup_bar = function()
                 {
                     -- *** Right widgets
                     layout = wibox.layout.fixed.horizontal,
+                    mytextclock,
                     myweatherwidget,
                     net_wired,
                     net_wireless,
@@ -283,7 +284,6 @@ gorgehousse_bar.setup_bar = function()
                     myramwidget,
                     -- mykeyboardlayout,
                     mybattery,
-                    mytextclock,
                     wibox.widget.systray(),
                     s.mylayoutbox
                 },
