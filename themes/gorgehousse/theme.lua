@@ -69,7 +69,7 @@ theme.screen_margin = dpi(2)
 theme.border_width = dpi(2)
 theme.border_radius = dpi(2)
 theme.border_normal = theme.xcolor8
-theme.border_focus = theme.xcolor3
+theme.border_focus = theme.xcolor6
 theme.border_marked = theme.xcolor1
 
 theme.wibar_height = dpi(40)
@@ -85,10 +85,13 @@ theme.wibar_width = theme.screen_width - theme.screen_margin * 4 - theme.wibar_b
 -- taglist_[bg|fg]_[focus|urgent|occupied|empty|volatile]
 theme.taglist_bg_focus = theme.xcolor4
 theme.taglist_fg_focus = theme.xforeground
-theme.taglist_bg_urgent = theme.xcolor9
+theme.taglist_bg_urgent = theme.xcolor1
 theme.taglist_fg_urgent = theme.xforeground
-theme.taglist_fg_empty = theme.dark_gradient[4]
+theme.taglist_fg_empty = "#666666"
 -- tasklist_[bg|fg]_[focus|urgent]
+theme.tasklist_bg_focus = theme.xbackground
+theme.tasklist_fg_focus = theme.xcolor6
+theme.tasklist_bg = theme.bg_normal
 -- titlebar_[bg|fg]_[normal|focus]
 theme.titlebar_bg_normal = theme.dark_gradient[1]
 theme.titlebar_fg_normal = theme.dark_gradient[4]
