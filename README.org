@@ -9,6 +9,11 @@ Now that I know Lua better, I might make this work to my liking.
 - nextcloud
 - nm-applet
 
+** Commands
+- Brightness control :: brightnessctl
+- Music control :: mpc
+- Volume control :: amixer
+
 ** Widgets
 - Network widget :: iw
 - Weather widget :: luarocks install lua-socket
