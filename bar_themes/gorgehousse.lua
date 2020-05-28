@@ -75,6 +75,7 @@ local net_wired =
 local mybattery =
     batteryarc_widget(
     {
+        show_current_level = true,
         font = widget_font,
         thickness = 3,
         charging_color = beautiful.widget_green
