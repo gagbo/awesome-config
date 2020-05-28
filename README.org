@@ -15,6 +15,7 @@ Now that I know Lua better, I might make this work to my liking.
 - Volume control :: amixer
 
 ** Widgets
+- Battery widget :: acpi
 - Network widget :: iw
 - Weather widget :: luarocks install lua-socket
 - Weather widget :: [[./json.lua][json.lua]] for the weather widget
