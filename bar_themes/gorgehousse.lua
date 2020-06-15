@@ -198,7 +198,7 @@ local tasklist_buttons =
 )
 
 -- * Keyboard map indicator and switcher
--- local mykeyboardlayout = awful.widget.keyboardlayout()
+local mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- * Bar definition
 gorgehousse_bar.setup_bar = function()
@@ -283,7 +283,7 @@ gorgehousse_bar.setup_bar = function()
                     mysysload,
                     mycpuwidget,
                     myramwidget,
-                    -- mykeyboardlayout,
+                    mykeyboardlayout,
                     mybattery,
                     wibox.widget.systray(),
                     s.mylayoutbox
