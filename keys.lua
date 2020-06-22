@@ -431,7 +431,7 @@ keys.clientkeys =
     ),
     awful.key(
         {modkey},
-        "t",
+        "v",
         function(c)
             c.ontop = not c.ontop
         end,
