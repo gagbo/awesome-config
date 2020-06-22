@@ -28,6 +28,7 @@ require("awful.hotkeys_popup.keys")
 beautiful.init(awful.util.getdir("config") .. "themes/gorgehousse/theme.lua")
 
 local config = require("config")
+-- Change to 'require("keys-bepo")' to switch
 local keys = require("keys")
 
 -- Set globalkeys and desktop buttons
