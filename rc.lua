@@ -27,6 +27,9 @@ require("awful.hotkeys_popup.keys")
 -- awful.spawn.with_shell("xrdb -merge ~/.Xresources")
 beautiful.init(awful.util.getdir("config") .. "themes/gorgehousse/theme.lua")
 
+local helpers = require("helpers")
+local hostname = helpers.getHostname() or "Windows"
+
 local config = require("config")
 -- Change to 'require("keys-bepo")' to switch
 local keys = require("keys")
@@ -77,8 +80,13 @@ client.connect_signal(
     end
 )
 
-local gorgehousse_bar = require("bar_themes.gorgehousse")
-gorgehousse_bar.setup_bar()
+local bar
+if hostname == "Kadabra" then
+    bar = require("bar_themes.gorgehousse")
+else
+    bar = require("bar_themes.aligatueur")
+end
+bar.setup_bar()
 
 -- * {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
